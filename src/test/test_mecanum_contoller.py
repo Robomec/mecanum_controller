@@ -1,10 +1,18 @@
 import pytest
-from src.mecanum_controller import MecaniumController
+from unittest import  mock
+from src.mecanum_controller import MecanumController
+from src.config import Config
 
+@mock.patch('__main__.Config')
+def create_instance
 
+@pytest.mark.smoke
 def test_mecanum_exists():
-    test = MecaniumController
-    assert test == MecaniumController
+    test = MecanumController
+    assert test == MecanumController
 
-
-def test_
+@pytest.mark.smoke
+def test_mecanum_init():
+    config_test = Config()
+    instance = MecanumController()
+    assert instance.config == config_test
