@@ -1,6 +1,7 @@
 import abc
 from src.config import Config
 import rospy
+from src.logging import Log
 
 class Motor(abc.ABC):
     @abc.abstractmethod
@@ -27,6 +28,8 @@ def getMotor(positon: str) -> Motor:
     """
     config = Config()
     if config.motor_driver_type.lower() == config.THINKER_MOTOR_DIRVER.lower():
-        pass
+        Log.info(f"Using {config.THINKER_MOTOR_DIRVER} Moter driver")
     else:
-        pass
+        er_msg = f"Couln't find a motor driver! Given Parameter: {conifg.motor_driver_type}"
+        Log.fatal(er_msg)
+        raise ValueError(er_msg) 
