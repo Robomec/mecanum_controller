@@ -18,7 +18,7 @@ class Motor(abc.ABC):
         pass
 
 
-def getMotor(positon: str) -> dict:
+def getMotors() -> dict:
     """Returns a dict of motors
         R1: front rigth Motor
         L1: front left Motor 
