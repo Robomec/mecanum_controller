@@ -1,5 +1,5 @@
 from src.config import Config
-
+import math
 
 class MecanumController:
     
@@ -11,3 +11,8 @@ class MecanumController:
     
     def init_motros(self):
         pass
+    
+    @staticmethod
+    def convert_rads_to_rpm( rads: int) -> int:
+        """convert rad/s Radian per second to rpm revolutions per minute"""
+        return rads * 9.5493
