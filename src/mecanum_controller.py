@@ -2,7 +2,7 @@ from src.config import Config
 import math
 
 class MecanumController:
-    
+
     def __init__(self):
         self.config = Config()
         self.wheel_separation_width = self.config.distance_left_to_right_wheel / 2
@@ -10,7 +10,11 @@ class MecanumController:
 
     
     def init_motros(self):
-        pass
+        self.motor_front_left = None
+        self.motor_front_rigth = None
+        self.motor_rear_left = None
+        self.motor_rear_rigth = None
+
     
     @staticmethod
     def convert_rads_to_rpm( rads: int) -> int:
