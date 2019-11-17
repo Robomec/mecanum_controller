@@ -4,7 +4,7 @@ import rospy
 
 class Config():
 
-    self.THINKER_MOTOR_DIRVER = "thinker"
+    THINKER_MOTOR_DIRVER = "thinker"
 
     def __init__(self):
         # distance in mm

@@ -17,7 +17,7 @@ class Motor(abc.ABC):
         pass
 
 
-def getMotor(positon: str):
+def getMotor(positon: str) -> Motor:
     """Returns a Motor class
         position:
             R1 = front rigth Motor
@@ -29,3 +29,4 @@ def getMotor(positon: str):
     if config.motor_driver_type.lower() == config.THINKER_MOTOR_DIRVER.lower():
         pass
     else:
+        pass
