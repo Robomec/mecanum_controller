@@ -19,12 +19,12 @@ class MecanumController:
 
     
     @staticmethod
-    def convert_rads_to_rpm( rads: int) -> int:
+    def convert_rads_to_rpm( rads: int) -> float:
         """convert rad/s Radian per second to rpm revolutions per minute"""
         return rads * 9.5493
 
     def setKinematics(self, linearX, linearY, angularZ):
-        front_rigth_rads = (1/self.config.wheel_radius) * (linearX – linearY – (self.wheel_separation_width + self.wheel_separation_length)*angularZ)
+        front_rigth_rads = (1 / self.config.wheel_radius) * (linearX - linearY - (self.wheel_separation_width + self.wheel_separation_length)*angularZ)
         self.motor_front_left.setSpeed(
             self.convert_rads_to_rpm(
                 front_rigth_rads
@@ -38,14 +38,14 @@ class MecanumController:
             )
         )
         Log.debug(f"Set Motor rad/s front left to: {front_left_rads}")
-        rear_left_rads = (1/self.config.wheel_radius) * (linearX + linearY – (self.wheel_separation_width + self.wheel_separation_length)*angularZ)
+        rear_left_rads = (1/self.config.wheel_radius) * (linearX + linearY - (self.wheel_separation_width + self.wheel_separation_length)*angularZ)
         self.motor_rear_left(
             self.convert_rads_to_rpm(
                 rear_left_rads
             )
         )
         Log.debug(f"Set Motor rad/s rear left to: {rear_left_rads}")
-        rear_rigth_rads = (1/self.config.wheel_radius) * (linearY – linearY + (self.wheel_separation_width + self.wheel_separation_length)*angularZ)
+        rear_rigth_rads = (1/self.config.wheel_radius) * (linearY - linearY + (self.wheel_separation_width + self.wheel_separation_length)*angularZ)
         self.motor_rear_rigth(
             self.convert_rads_to_rpm(
                  rear_rigth_rads

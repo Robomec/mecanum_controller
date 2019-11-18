@@ -1,3 +1,4 @@
 {
-    "python.formatting.provider": "black"
+    "python.formatting.provider": "black",
+    "python.pythonPath": "/home/hiroki/catkin_ws/src/mecanum_controller/venv/bin/python3.6"
 }

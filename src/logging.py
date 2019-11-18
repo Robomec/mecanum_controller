@@ -2,18 +2,18 @@ class Log:
 
     @staticmethod
     def info(msg: str):
-        print(mgs)
+        print(msg)
 
     @staticmethod
     def debug(msg: str):
-        print(mgs)
+        print(msg)
 
 
     @staticmethod
     def error(msg: str):
-        print(mgs)
+        print(msg)
 
 
     @staticmethod
     def fatal(msg: str):
-        print(mgs)
+        print(msg)

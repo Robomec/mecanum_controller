@@ -35,6 +35,6 @@ def getMotors() -> dict:
         }
         Log.info(f"Using {config.THINKER_MOTOR_DIRVER} Moter driver")
     else:
-        er_msg = f"Couln't find a motor driver! Given Parameter: {conifg.motor_driver_type}"
+        er_msg = f"Couln't find a motor driver! Given Parameter: {config.motor_driver_type}"
         Log.fatal(er_msg)
         raise ValueError(er_msg) 
