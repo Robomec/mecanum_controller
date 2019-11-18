@@ -1,5 +1,5 @@
 import rospy
-
+import math
 
 
 class Config():
@@ -15,6 +15,7 @@ class Config():
         self.motor_driver_type = rospy.get_param('motor_driver_type', 'thinker' )
         # wheel_perimeter in mm 
         self.wheel_perimeter =  wheel_perimeter('wheel_perimeter', 100)
-        
+        # wheel_radius in mm
+        self.wheel_radius = self.wheel_perimeter / ( 2 * math.pi )
 
 
