@@ -3,6 +3,7 @@ from src.config import Config
 import rospy
 from src.logging import Log
 
+
 class Motor(abc.ABC):
     @abc.abstractmethod
     def setSpeed(self, rpm: int):
@@ -35,6 +36,8 @@ def getMotors() -> dict:
         }
         Log.info(f"Using {config.THINKER_MOTOR_DIRVER} Moter driver")
     else:
-        er_msg = f"Couln't find a motor driver! Given Parameter: {config.motor_driver_type}"
+        er_msg = (
+            f"Couln't find a motor driver! Given Parameter: {config.motor_driver_type}"
+        )
         Log.fatal(er_msg)
-        raise ValueError(er_msg) 
+        raise ValueError(er_msg)
