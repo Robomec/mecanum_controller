@@ -21,7 +21,7 @@ class MecanumController:
         """convert rad/s Radian per second to rpm revolutions per minute"""
         return rads * 9.5493
 
-    def setKinematics(self, linearX, linearY, angularZ):
+    def setKinematics(self, linearX: float, linearY: float, angularZ: float):
         front_rigth_rads = (1 / self.config.wheel_radius) * (
             linearX
             - linearY
@@ -50,3 +50,34 @@ class MecanumController:
         )
         self.motor_rear_rigth(self.convert_rads_to_rpm(rear_rigth_rads))
         Log.debug(f"Set Motor rad/s rear rigth to: {rear_rigth_rads}")
+
+    def getOdometry(self) -> tuple:
+        """return tuple of floats 
+        1. linearx
+        2. lineary
+        3. angularz"""
+        linearX = (
+            self.motor_front_left.getSpeed()
+            + self.motor_front_right.getSpeed()
+            + self.motor_rear_left.getSpeed()
+            + self.motor_rear_right.getSpeed()
+        ) * (self.wheel_radius / 4)
+
+        linearY = (
+            -1 * self.wheel_front_left.getSpeed()
+            + self.motor_front_right.getSpeed()
+            + self.motor_rear_left.getSpeed()
+            - self.motor_rear_right.getSpeed()
+        ) * (self.wheel_radius / 4)
+
+        angularZ = (
+            -1 * self.motor_front_left
+            + self.motor_front_right
+            - self.motor_rear_left
+            + self.motor_rear_right
+        ) * (
+            self.motor_radius
+            / (4 * (self.wheel_separation_width + self.wheel_separation_length))
+        )
+
+        return (linearX, linearY, angularZ)
